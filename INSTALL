@@ -1,0 +1,26 @@
+# INSTALL JAVA on pureOS-10/Debian-11
+apt install openjdk-17-jdk openjdk-17-jre openjdk-17-doc && java -version       # nano /readme/java
+
+# INSTALL GRADLE
+cd /usr/src/ && wget https://services.gradle.org/distributions/gradle-7.6-bin.zip
+unzip -d /opt/gradle /usr/src/gradle-7.6-bin.zip && vdir /opt/gradle
+
+nano /etc/profile.d/gradle.sh
+  export GRADLE_HOME=/opt/gradle/gradle-7.6
+  export PATH=${GRADLE_HOME}/bin:${PATH}
+
+chmod +x /etc/profile.d/gradle.sh && source /etc/profile.d/gradle.sh && gradle -version
+
+# For more details see https://docs.gradle.org/7.4/release-notes.html
+# For more detail on using Gradle, see https://docs.gradle.org/7.4/userguide/command_line_interface.html
+    # For troubleshooting, visit https://help.gradle.org
+
+./gradlew
+./gradlew --help		# To see a list of command-line options
+./gradlew tasks			# To see a list of available tasks
+./gradlew help --task <task>	# To see more detail about a task
+
+# > Configure project :app
+# "/home/mayer/.sign/signing.properties" not found
+# BUILD SUCCESSFUL in 1s
+# 1 actionable task: 1 executed
